@@ -1,5 +1,8 @@
 import Link from "next/link";
 
+const ANDROID_APP_DRIVE_URL =
+  "https://drive.google.com/drive/folders/16O7LgzrYN4GziEUktbibBWYxwvXeYQab?usp=drive_link";
+
 const featureCards = [
   {
     title: "Scan & Bill in Seconds",
@@ -149,7 +152,14 @@ export default function HomePage() {
                   <Icon type="arrow" />
                 </span>
               </button>
-              <button className="btn btn-secondary">Book a Demo</button>
+              <a
+                className="btn btn-secondary"
+                href={ANDROID_APP_DRIVE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Download Android App
+              </a>
             </div>
           </div>
           <div className="hero-visual">
