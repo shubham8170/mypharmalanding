@@ -46,7 +46,7 @@ const footerColumns = [
     heading: "Company",
     links: [
       { label: "About Us", href: "/" },
-      { label: "Privacy Policy", href: "/" },
+      { label: "Privacy Policy", href: "/privacy-policy" },
       { label: "Security", href: "/security" },
     ],
   },
@@ -160,6 +160,9 @@ export default function HomePage() {
               >
                 Download Android App
               </a>
+              <Link className="btn btn-secondary" href="/privacy-policy">
+                Privacy Policy
+              </Link>
             </div>
           </div>
           <div className="hero-visual">
