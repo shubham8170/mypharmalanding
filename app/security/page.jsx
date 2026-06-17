@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Security | MyPharma",
+  title: "Security | CureMitra",
 };
 
 export default function SecurityPage() {
@@ -9,7 +9,7 @@ export default function SecurityPage() {
     <main className="subpage">
       <header className="subpage-topbar">
         <div className="container topbar-inner">
-          <Link href="/" className="brand-mark">MyPharma</Link>
+          <Link href="/" className="brand-mark">CureMitra</Link>
           <nav className="top-links">
             <Link href="/">Product</Link>
             <Link href="/features">Features</Link>

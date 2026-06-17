@@ -124,7 +124,7 @@ export default function HomePage() {
     <main className="page">
       <header className="topbar">
         <div className="container topbar-inner">
-          <p className="brand-mark">MyPharma</p>
+          <p className="brand-mark">CureMitra</p>
           <nav className="top-links">
             <Link href="/">Product</Link>
             <Link href="/features">Features</Link>
@@ -138,7 +138,7 @@ export default function HomePage() {
       <section className="hero">
         <div className="container hero-grid">
           <div className="hero-copy">
-            <p className="eyebrow">MyPharma</p>
+            <p className="eyebrow">CureMitra</p>
             <h1>Streamline Your Pharmacy &amp; Clinic</h1>
             <p className="subcopy">
               Automate complex billing workflows with clinical-grade OCR. Reduce
@@ -262,7 +262,7 @@ export default function HomePage() {
       <footer className="footer">
         <div className="container footer-grid">
           <div className="brand">
-            <h5>MyPharma</h5>
+            <h5>CureMitra</h5>
             <p>
               Smart OCR and billing for the modern healthcare facility.
               Precision engineering for clinical excellence.

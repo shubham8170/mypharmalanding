@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Privacy Policy | MyPharma",
+  title: "Privacy Policy | CureMitra",
 };
 
 export default function PrivacyPolicyPage() {
@@ -10,7 +10,7 @@ export default function PrivacyPolicyPage() {
       <header className="subpage-topbar">
         <div className="container topbar-inner">
           <Link href="/" className="brand-mark">
-            MyPharma
+            CureMitra
           </Link>
           <nav className="top-links">
             <Link href="/">Product</Link>
@@ -28,7 +28,7 @@ export default function PrivacyPolicyPage() {
         <div className="container sub-hero-grid">
           <div>
             <p className="eyebrow">Privacy</p>
-            <h1 className="sub-title">MyPharma Privacy Policy</h1>
+            <h1 className="sub-title">CureMitra Privacy Policy</h1>
             <p className="subcopy">
               <strong>Effective date:</strong> 2026-04-16
             </p>
@@ -40,7 +40,7 @@ export default function PrivacyPolicyPage() {
       <section className="sub-section">
         <div className="container policy-content">
           <p>
-            MyPharma (<strong>the App</strong>) is a pharmacy management
+            CureMitra (<strong>the App</strong>) is a pharmacy management
             application. This Privacy Policy explains how information is
             collected, used, and shared when you use the App.
           </p>

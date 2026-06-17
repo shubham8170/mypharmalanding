@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Customer Support | MyPharma",
+  title: "Customer Support | CureMitra",
 };
 
 export default function CustomerSupportPage() {
@@ -9,7 +9,7 @@ export default function CustomerSupportPage() {
     <main className="subpage">
       <header className="subpage-topbar">
         <div className="container topbar-inner">
-          <Link href="/" className="brand-mark">MyPharma</Link>
+          <Link href="/" className="brand-mark">CureMitra</Link>
           <nav className="top-links">
             <Link href="/">Product</Link>
             <Link href="/features">Features</Link>
@@ -59,7 +59,7 @@ export default function CustomerSupportPage() {
           <h2 className="faq-title">Frequently Asked Questions</h2>
           <div className="faq-list">
             <details>
-              <summary>How do I connect MyPharma to my existing POS system?</summary>
+              <summary>How do I connect CureMitra to my existing POS system?</summary>
               <p>Use the integration wizard in settings and map your billing schema.</p>
             </details>
             <details>

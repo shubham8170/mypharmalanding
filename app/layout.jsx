@@ -1,8 +1,8 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "MyPharma",
-  description: "MyPharma landing page",
+  title: "CureMitra",
+  description: "CureMitra landing page",
   icons: {
     icon: [{ url: "/icon.png", type: "image/png", sizes: "32x32" }, { url: "/favicon.ico", type: "image/x-icon" }],
     shortcut: "/favicon.ico",
