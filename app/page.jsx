@@ -315,10 +315,10 @@ export default function HomePage() {
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
         <div className="container topbar-inner">
-          <div className="brand-mark">
+          <Link href="/" className="brand-mark">
             <Pill size={22} className="brand-icon" strokeWidth={2} />
             <span>CureMitra</span>
-          </div>
+          </Link>
           <nav className="top-links">
             <Link href="/">Product</Link>
             <Link href="/features">Features</Link>
@@ -673,10 +673,10 @@ export default function HomePage() {
       <footer className="footer">
         <div className="container footer-grid">
           <div className="brand">
-            <div className="brand-mark">
+            <Link href="/" className="brand-mark">
               <Pill size={22} className="brand-icon" strokeWidth={2} />
               <span>CureMitra</span>
-            </div>
+            </Link>
             <p>
               Smart OCR and billing for the modern healthcare facility. Precision
               engineering for clinical excellence.
