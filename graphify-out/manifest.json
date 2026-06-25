@@ -1,0 +1,47 @@
+{
+  "/Users/shubhambiswas/projects/mypharmalandingpage/package.json": {
+    "mtime": 1781724204.1174138,
+    "ast_hash": "15c05a04052dab37e328a1bdaee6a00f",
+    "semantic_hash": "15c05a04052dab37e328a1bdaee6a00f"
+  },
+  "/Users/shubhambiswas/projects/mypharmalandingpage/.eslintrc.json": {
+    "mtime": 1775574026.6862645,
+    "ast_hash": "5cc89077d438e3d0d0a8308ab7e06a5a",
+    "semantic_hash": "5cc89077d438e3d0d0a8308ab7e06a5a"
+  },
+  "/Users/shubhambiswas/projects/mypharmalandingpage/app/layout.jsx": {
+    "mtime": 1781724202.0588534,
+    "ast_hash": "d5cc5fc96897d1b492d2e41172fe0a04",
+    "semantic_hash": "d5cc5fc96897d1b492d2e41172fe0a04"
+  },
+  "/Users/shubhambiswas/projects/mypharmalandingpage/app/page.jsx": {
+    "mtime": 1781724202.266906,
+    "ast_hash": "c76e101d77a86079ec35f3b16dbf877a",
+    "semantic_hash": "c76e101d77a86079ec35f3b16dbf877a"
+  },
+  "/Users/shubhambiswas/projects/mypharmalandingpage/app/customer-support/page.jsx": {
+    "mtime": 1781724202.6084538,
+    "ast_hash": "c908482d128ef22fb853a7d33964d80b",
+    "semantic_hash": "c908482d128ef22fb853a7d33964d80b"
+  },
+  "/Users/shubhambiswas/projects/mypharmalandingpage/app/security/page.jsx": {
+    "mtime": 1781724202.9749198,
+    "ast_hash": "b0452741371c9643f9b0c569bc83a35e",
+    "semantic_hash": "b0452741371c9643f9b0c569bc83a35e"
+  },
+  "/Users/shubhambiswas/projects/mypharmalandingpage/app/privacy-policy/page.jsx": {
+    "mtime": 1781724203.797076,
+    "ast_hash": "09ab26ea2f799ccb609fbd321b75db82",
+    "semantic_hash": "09ab26ea2f799ccb609fbd321b75db82"
+  },
+  "/Users/shubhambiswas/projects/mypharmalandingpage/app/features/page.jsx": {
+    "mtime": 1781724203.4133408,
+    "ast_hash": "0e2b1aa6e75e399621fbcc5cefcf0665",
+    "semantic_hash": "0e2b1aa6e75e399621fbcc5cefcf0665"
+  },
+  "/Users/shubhambiswas/projects/mypharmalandingpage/app/icon.png": {
+    "mtime": 1775577063.3308895,
+    "ast_hash": "d4ef04bba8a76d5327b958b852c05457",
+    "semantic_hash": "d4ef04bba8a76d5327b958b852c05457"
+  }
+}

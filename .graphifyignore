@@ -1,0 +1,19 @@
+# Dependencies and build output
+node_modules/
+.next/
+out/
+dist/
+build/
+
+# Graphify outputs (avoid indexing the graph itself)
+graphify-out/
+
+# Environment and secrets
+.env*
+
+# OS and editor noise
+.DS_Store
+*.log
+
+# Lockfiles (large, low signal for the knowledge graph)
+package-lock.json

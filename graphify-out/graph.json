@@ -1,0 +1,1724 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "hyperedges": [
+      {
+        "id": "app_icon_visual_composition",
+        "label": "CureMitra Icon Visual Composition",
+        "nodes": [
+          "app_icon_squircle_shape",
+          "app_icon_diagonal_gradient",
+          "app_icon_white_medical_cross"
+        ],
+        "relation": "form",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "app/icon.png"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "label": "package.json",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L1",
+      "id": "package_json",
+      "community": 1,
+      "norm_label": "package.json"
+    },
+    {
+      "label": "name",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "id": "mypharmalandingpage_package_name",
+      "community": 1,
+      "norm_label": "name"
+    },
+    {
+      "label": "version",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "id": "mypharmalandingpage_package_version",
+      "community": 1,
+      "norm_label": "version"
+    },
+    {
+      "label": "private",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "id": "mypharmalandingpage_package_private",
+      "community": 1,
+      "norm_label": "private"
+    },
+    {
+      "label": "engines",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "id": "mypharmalandingpage_package_engines",
+      "community": 1,
+      "norm_label": "engines"
+    },
+    {
+      "label": "node",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "id": "mypharmalandingpage_package_engines_node",
+      "community": 1,
+      "norm_label": "node"
+    },
+    {
+      "label": "scripts",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L8",
+      "id": "mypharmalandingpage_package_scripts",
+      "community": 1,
+      "norm_label": "scripts"
+    },
+    {
+      "label": "dev",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L9",
+      "id": "mypharmalandingpage_package_scripts_dev",
+      "community": 1,
+      "norm_label": "dev"
+    },
+    {
+      "label": "build",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L10",
+      "id": "mypharmalandingpage_package_scripts_build",
+      "community": 1,
+      "norm_label": "build"
+    },
+    {
+      "label": "start",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "id": "mypharmalandingpage_package_scripts_start",
+      "community": 1,
+      "norm_label": "start"
+    },
+    {
+      "label": "lint",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L12",
+      "id": "mypharmalandingpage_package_scripts_lint",
+      "community": 1,
+      "norm_label": "lint"
+    },
+    {
+      "label": "dependencies",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "id": "mypharmalandingpage_package_dependencies",
+      "community": 1,
+      "norm_label": "dependencies"
+    },
+    {
+      "label": "next",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "id": "mypharmalandingpage_package_dependencies_next",
+      "community": 1,
+      "norm_label": "next"
+    },
+    {
+      "label": "react",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L16",
+      "id": "mypharmalandingpage_package_dependencies_react",
+      "community": 1,
+      "norm_label": "react"
+    },
+    {
+      "label": "react-dom",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L17",
+      "id": "mypharmalandingpage_package_dependencies_react_dom",
+      "community": 1,
+      "norm_label": "react-dom"
+    },
+    {
+      "label": ".eslintrc.json",
+      "file_type": "code",
+      "source_file": ".eslintrc.json",
+      "source_location": "L1",
+      "id": "eslintrc_json",
+      "community": 10,
+      "norm_label": ".eslintrc.json"
+    },
+    {
+      "label": "extends",
+      "file_type": "code",
+      "source_file": ".eslintrc.json",
+      "source_location": "L2",
+      "id": "mypharmalandingpage_eslintrc_extends",
+      "community": 10,
+      "norm_label": "extends"
+    },
+    {
+      "label": "layout.jsx",
+      "file_type": "code",
+      "source_file": "app/layout.jsx",
+      "source_location": "L1",
+      "id": "app_layout_jsx",
+      "community": 7,
+      "norm_label": "layout.jsx"
+    },
+    {
+      "label": "metadata",
+      "file_type": "code",
+      "source_file": "app/layout.jsx",
+      "source_location": "L3",
+      "id": "app_layout_metadata",
+      "community": 7,
+      "norm_label": "metadata"
+    },
+    {
+      "label": "RootLayout()",
+      "file_type": "code",
+      "source_file": "app/layout.jsx",
+      "source_location": "L13",
+      "id": "app_layout_rootlayout",
+      "community": 7,
+      "norm_label": "rootlayout()"
+    },
+    {
+      "label": "page.jsx",
+      "file_type": "code",
+      "source_file": "app/page.jsx",
+      "source_location": "L1",
+      "id": "app_page_jsx",
+      "community": 3,
+      "norm_label": "page.jsx"
+    },
+    {
+      "label": "featureCards",
+      "file_type": "code",
+      "source_file": "app/page.jsx",
+      "source_location": "L6",
+      "id": "app_page_featurecards",
+      "community": 3,
+      "norm_label": "featurecards"
+    },
+    {
+      "label": "workflowPoints",
+      "file_type": "code",
+      "source_file": "app/page.jsx",
+      "source_location": "L21",
+      "id": "app_page_workflowpoints",
+      "community": 3,
+      "norm_label": "workflowpoints"
+    },
+    {
+      "label": "footerColumns",
+      "file_type": "code",
+      "source_file": "app/page.jsx",
+      "source_location": "L36",
+      "id": "app_page_footercolumns",
+      "community": 3,
+      "norm_label": "footercolumns"
+    },
+    {
+      "label": "trustBadges",
+      "file_type": "code",
+      "source_file": "app/page.jsx",
+      "source_location": "L63",
+      "id": "app_page_trustbadges",
+      "community": 3,
+      "norm_label": "trustbadges"
+    },
+    {
+      "label": "Icon()",
+      "file_type": "code",
+      "source_file": "app/page.jsx",
+      "source_location": "L65",
+      "id": "app_page_icon",
+      "community": 3,
+      "norm_label": "icon()"
+    },
+    {
+      "label": "HomePage()",
+      "file_type": "code",
+      "source_file": "app/page.jsx",
+      "source_location": "L122",
+      "id": "app_page_homepage",
+      "community": 3,
+      "norm_label": "homepage()"
+    },
+    {
+      "label": "page.jsx",
+      "file_type": "code",
+      "source_file": "app/customer-support/page.jsx",
+      "source_location": "L1",
+      "id": "app_customer_support_page_jsx",
+      "community": 5,
+      "norm_label": "page.jsx"
+    },
+    {
+      "label": "metadata",
+      "file_type": "code",
+      "source_file": "app/customer-support/page.jsx",
+      "source_location": "L3",
+      "id": "customer_support_page_metadata",
+      "community": 5,
+      "norm_label": "metadata"
+    },
+    {
+      "label": "CustomerSupportPage()",
+      "file_type": "code",
+      "source_file": "app/customer-support/page.jsx",
+      "source_location": "L7",
+      "id": "customer_support_page_customersupportpage",
+      "community": 5,
+      "norm_label": "customersupportpage()"
+    },
+    {
+      "label": "page.jsx",
+      "file_type": "code",
+      "source_file": "app/security/page.jsx",
+      "source_location": "L1",
+      "id": "app_security_page_jsx",
+      "community": 9,
+      "norm_label": "page.jsx"
+    },
+    {
+      "label": "metadata",
+      "file_type": "code",
+      "source_file": "app/security/page.jsx",
+      "source_location": "L3",
+      "id": "security_page_metadata",
+      "community": 9,
+      "norm_label": "metadata"
+    },
+    {
+      "label": "SecurityPage()",
+      "file_type": "code",
+      "source_file": "app/security/page.jsx",
+      "source_location": "L7",
+      "id": "security_page_securitypage",
+      "community": 9,
+      "norm_label": "securitypage()"
+    },
+    {
+      "label": "page.jsx",
+      "file_type": "code",
+      "source_file": "app/privacy-policy/page.jsx",
+      "source_location": "L1",
+      "id": "app_privacy_policy_page_jsx",
+      "community": 8,
+      "norm_label": "page.jsx"
+    },
+    {
+      "label": "metadata",
+      "file_type": "code",
+      "source_file": "app/privacy-policy/page.jsx",
+      "source_location": "L3",
+      "id": "privacy_policy_page_metadata",
+      "community": 8,
+      "norm_label": "metadata"
+    },
+    {
+      "label": "PrivacyPolicyPage()",
+      "file_type": "code",
+      "source_file": "app/privacy-policy/page.jsx",
+      "source_location": "L7",
+      "id": "privacy_policy_page_privacypolicypage",
+      "community": 8,
+      "norm_label": "privacypolicypage()"
+    },
+    {
+      "label": "page.jsx",
+      "file_type": "code",
+      "source_file": "app/features/page.jsx",
+      "source_location": "L1",
+      "id": "app_features_page_jsx",
+      "community": 6,
+      "norm_label": "page.jsx"
+    },
+    {
+      "label": "metadata",
+      "file_type": "code",
+      "source_file": "app/features/page.jsx",
+      "source_location": "L3",
+      "id": "features_page_metadata",
+      "community": 6,
+      "norm_label": "metadata"
+    },
+    {
+      "label": "FeaturesPage()",
+      "file_type": "code",
+      "source_file": "app/features/page.jsx",
+      "source_location": "L7",
+      "id": "features_page_featurespage",
+      "community": 6,
+      "norm_label": "featurespage()"
+    },
+    {
+      "label": "curemitra-landingpage",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "package_curemitra_landingpage",
+      "community": 4,
+      "norm_label": "curemitra-landingpage"
+    },
+    {
+      "label": "Next.js 13.5.11",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "package_next",
+      "community": 4,
+      "norm_label": "next.js 13.5.11"
+    },
+    {
+      "label": "React 18.2.0",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "package_react",
+      "community": 4,
+      "norm_label": "react 18.2.0"
+    },
+    {
+      "label": "ESLint Next Core Web Vitals Config",
+      "file_type": "code",
+      "source_file": ".eslintrc.json",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "eslintrc_config",
+      "community": 4,
+      "norm_label": "eslint next core web vitals config"
+    },
+    {
+      "label": "RootLayout",
+      "file_type": "code",
+      "source_file": "app/layout.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "layout_rootlayout",
+      "community": 0,
+      "norm_label": "rootlayout"
+    },
+    {
+      "label": "CureMitra Site Metadata",
+      "file_type": "code",
+      "source_file": "app/layout.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "layout_metadata",
+      "community": 11,
+      "norm_label": "curemitra site metadata"
+    },
+    {
+      "label": "HomePage",
+      "file_type": "code",
+      "source_file": "app/page.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "page_homepage",
+      "community": 0,
+      "norm_label": "homepage"
+    },
+    {
+      "label": "Icon",
+      "file_type": "code",
+      "source_file": "app/page.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "page_icon",
+      "community": 0,
+      "norm_label": "icon"
+    },
+    {
+      "label": "featureCards",
+      "file_type": "code",
+      "source_file": "app/page.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "page_feature_cards",
+      "community": 0,
+      "norm_label": "featurecards"
+    },
+    {
+      "label": "workflowPoints",
+      "file_type": "code",
+      "source_file": "app/page.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "page_workflow_points",
+      "community": 0,
+      "norm_label": "workflowpoints"
+    },
+    {
+      "label": "footerColumns",
+      "file_type": "code",
+      "source_file": "app/page.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "page_footer_columns",
+      "community": 0,
+      "norm_label": "footercolumns"
+    },
+    {
+      "label": "ANDROID_APP_DRIVE_URL",
+      "file_type": "code",
+      "source_file": "app/page.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "page_android_app_url",
+      "community": 0,
+      "norm_label": "android_app_drive_url"
+    },
+    {
+      "label": "CustomerSupportPage",
+      "file_type": "code",
+      "source_file": "app/customer-support/page.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "page_customer_support_page",
+      "community": 0,
+      "norm_label": "customersupportpage"
+    },
+    {
+      "label": "SecurityPage",
+      "file_type": "code",
+      "source_file": "app/security/page.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "page_security_page",
+      "community": 0,
+      "norm_label": "securitypage"
+    },
+    {
+      "label": "PrivacyPolicyPage",
+      "file_type": "code",
+      "source_file": "app/privacy-policy/page.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "page_privacy_policy_page",
+      "community": 0,
+      "norm_label": "privacypolicypage"
+    },
+    {
+      "label": "FeaturesPage",
+      "file_type": "code",
+      "source_file": "app/features/page.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "page_features_page",
+      "community": 0,
+      "norm_label": "featurespage"
+    },
+    {
+      "label": "CureMitra",
+      "file_type": "concept",
+      "source_file": "app/layout.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "concept_curemitra",
+      "community": 11,
+      "norm_label": "curemitra"
+    },
+    {
+      "label": "OCR Billing",
+      "file_type": "concept",
+      "source_file": "app/page.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "concept_ocr_billing",
+      "community": 0,
+      "norm_label": "ocr billing"
+    },
+    {
+      "label": "AI-Driven Inventory Management",
+      "file_type": "concept",
+      "source_file": "app/page.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "concept_inventory_ai",
+      "community": 0,
+      "norm_label": "ai-driven inventory management"
+    },
+    {
+      "label": "HIPAA Compliance and PHI",
+      "file_type": "concept",
+      "source_file": "app/security/page.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "concept_hipaa_phi",
+      "community": 0,
+      "norm_label": "hipaa compliance and phi"
+    },
+    {
+      "label": "Camera OCR Extraction",
+      "file_type": "concept",
+      "source_file": "app/privacy-policy/page.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "concept_camera_ocr",
+      "community": 0,
+      "norm_label": "camera ocr extraction"
+    },
+    {
+      "label": "Shared Subpage Navigation Pattern",
+      "file_type": "concept",
+      "source_file": "app/features/page.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "page_subpage_nav_pattern",
+      "community": 0,
+      "norm_label": "shared subpage navigation pattern"
+    },
+    {
+      "label": "Privacy Policy Effective Date 2026-04-16",
+      "file_type": "document",
+      "source_file": "app/privacy-policy/page.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "privacy_policy_effective_date",
+      "community": 0,
+      "norm_label": "privacy policy effective date 2026-04-16"
+    },
+    {
+      "label": "shubhambiswas024@gmail.com",
+      "file_type": "document",
+      "source_file": "app/privacy-policy/page.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "privacy_policy_contact_email",
+      "community": 0,
+      "norm_label": "shubhambiswas024@gmail.com"
+    },
+    {
+      "label": "CureMitra App Icon",
+      "file_type": "image",
+      "source_file": "app/icon.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "app_icon_curemitra_app_icon",
+      "community": 2,
+      "norm_label": "curemitra app icon"
+    },
+    {
+      "label": "Squircle Container Shape",
+      "file_type": "image",
+      "source_file": "app/icon.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "app_icon_squircle_shape",
+      "community": 2,
+      "norm_label": "squircle container shape"
+    },
+    {
+      "label": "Diagonal Gradient Background",
+      "file_type": "image",
+      "source_file": "app/icon.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "app_icon_diagonal_gradient",
+      "community": 2,
+      "norm_label": "diagonal gradient background"
+    },
+    {
+      "label": "Teal-Navy Gradient Tone",
+      "file_type": "image",
+      "source_file": "app/icon.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "app_icon_teal_navy_tone",
+      "community": 2,
+      "norm_label": "teal-navy gradient tone"
+    },
+    {
+      "label": "Lime Green Gradient Tone",
+      "file_type": "image",
+      "source_file": "app/icon.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "app_icon_lime_green_tone",
+      "community": 2,
+      "norm_label": "lime green gradient tone"
+    },
+    {
+      "label": "White Medical Cross Symbol",
+      "file_type": "image",
+      "source_file": "app/icon.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "app_icon_white_medical_cross",
+      "community": 2,
+      "norm_label": "white medical cross symbol"
+    },
+    {
+      "label": "Five-Square Plus Cross Grid",
+      "file_type": "image",
+      "source_file": "app/icon.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "app_icon_cross_square_grid",
+      "community": 2,
+      "norm_label": "five-square plus cross grid"
+    },
+    {
+      "label": "Pharmacy Healthcare Brand Identity",
+      "file_type": "concept",
+      "source_file": "app/icon.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "app_icon_pharmacy_healthcare_identity",
+      "community": 2,
+      "norm_label": "pharmacy healthcare brand identity"
+    },
+    {
+      "label": "Modern Health-Tech Aesthetic",
+      "file_type": "concept",
+      "source_file": "app/icon.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "app_icon_modern_health_tech_aesthetic",
+      "community": 2,
+      "norm_label": "modern health-tech aesthetic"
+    },
+    {
+      "label": "Small-Size Favicon Recognition",
+      "file_type": "concept",
+      "source_file": "app/icon.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "app_icon_small_size_recognition",
+      "community": 2,
+      "norm_label": "small-size favicon recognition"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "package_json",
+      "target": "mypharmalandingpage_package_name",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "package_json",
+      "target": "mypharmalandingpage_package_version",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "package_json",
+      "target": "mypharmalandingpage_package_private",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "package_json",
+      "target": "mypharmalandingpage_package_engines",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "package_json",
+      "target": "mypharmalandingpage_package_scripts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "package_json",
+      "target": "mypharmalandingpage_package_dependencies",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "mypharmalandingpage_package_engines",
+      "target": "mypharmalandingpage_package_engines_node",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "mypharmalandingpage_package_scripts",
+      "target": "mypharmalandingpage_package_scripts_dev",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "mypharmalandingpage_package_scripts",
+      "target": "mypharmalandingpage_package_scripts_build",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "mypharmalandingpage_package_scripts",
+      "target": "mypharmalandingpage_package_scripts_start",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "mypharmalandingpage_package_scripts",
+      "target": "mypharmalandingpage_package_scripts_lint",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "mypharmalandingpage_package_dependencies",
+      "target": "mypharmalandingpage_package_dependencies_next",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "mypharmalandingpage_package_dependencies",
+      "target": "mypharmalandingpage_package_dependencies_react",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "mypharmalandingpage_package_dependencies",
+      "target": "mypharmalandingpage_package_dependencies_react_dom",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".eslintrc.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "eslintrc_json",
+      "target": "mypharmalandingpage_eslintrc_extends",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/layout.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "app_layout_jsx",
+      "target": "app_layout_metadata",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/layout.jsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "app_layout_jsx",
+      "target": "app_layout_rootlayout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/page.jsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "app_page_jsx",
+      "target": "app_page_featurecards",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/page.jsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "app_page_jsx",
+      "target": "app_page_workflowpoints",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/page.jsx",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "app_page_jsx",
+      "target": "app_page_footercolumns",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/page.jsx",
+      "source_location": "L63",
+      "weight": 1.0,
+      "source": "app_page_jsx",
+      "target": "app_page_trustbadges",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/page.jsx",
+      "source_location": "L65",
+      "weight": 1.0,
+      "source": "app_page_jsx",
+      "target": "app_page_icon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/page.jsx",
+      "source_location": "L122",
+      "weight": 1.0,
+      "source": "app_page_jsx",
+      "target": "app_page_homepage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/customer-support/page.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "app_customer_support_page_jsx",
+      "target": "customer_support_page_metadata",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/customer-support/page.jsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "app_customer_support_page_jsx",
+      "target": "customer_support_page_customersupportpage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/security/page.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "app_security_page_jsx",
+      "target": "security_page_metadata",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/security/page.jsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "app_security_page_jsx",
+      "target": "security_page_securitypage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/privacy-policy/page.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "app_privacy_policy_page_jsx",
+      "target": "privacy_policy_page_metadata",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/privacy-policy/page.jsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "app_privacy_policy_page_jsx",
+      "target": "privacy_policy_page_privacypolicypage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/features/page.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "app_features_page_jsx",
+      "target": "features_page_metadata",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/features/page.jsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "app_features_page_jsx",
+      "target": "features_page_featurespage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "package.json",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "package_curemitra_landingpage",
+      "target": "package_next"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "package.json",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "package_curemitra_landingpage",
+      "target": "package_react"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": ".eslintrc.json",
+      "source_location": null,
+      "weight": 0.6,
+      "source": "eslintrc_config",
+      "target": "package_curemitra_landingpage"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "app/layout.jsx",
+      "source_location": null,
+      "weight": 0.8,
+      "source": "layout_rootlayout",
+      "target": "page_homepage"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "app/layout.jsx",
+      "source_location": null,
+      "weight": 0.7,
+      "source": "layout_rootlayout",
+      "target": "page_features_page"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "app/layout.jsx",
+      "source_location": null,
+      "weight": 0.7,
+      "source": "layout_rootlayout",
+      "target": "page_security_page"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "app/layout.jsx",
+      "source_location": null,
+      "weight": 0.7,
+      "source": "layout_rootlayout",
+      "target": "page_privacy_policy_page"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "app/layout.jsx",
+      "source_location": null,
+      "weight": 0.7,
+      "source": "layout_rootlayout",
+      "target": "page_customer_support_page"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/layout.jsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "layout_metadata",
+      "target": "concept_curemitra"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/page.jsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "page_homepage",
+      "target": "page_icon"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/page.jsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "page_homepage",
+      "target": "page_feature_cards"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/page.jsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "page_homepage",
+      "target": "page_workflow_points"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/page.jsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "page_homepage",
+      "target": "page_footer_columns"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/page.jsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "page_homepage",
+      "target": "page_android_app_url"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "app/features/page.jsx",
+      "source_location": null,
+      "weight": 0.65,
+      "source": "page_features_page",
+      "target": "page_homepage"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "app/page.jsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "page_homepage",
+      "target": "page_security_page"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "app/page.jsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "page_homepage",
+      "target": "page_privacy_policy_page"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "app/page.jsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "page_homepage",
+      "target": "page_customer_support_page"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/page.jsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "page_homepage",
+      "target": "concept_curemitra"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "app/page.jsx",
+      "source_location": null,
+      "weight": 0.85,
+      "source": "page_homepage",
+      "target": "concept_ocr_billing"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "app/page.jsx",
+      "source_location": null,
+      "weight": 0.85,
+      "source": "page_homepage",
+      "target": "concept_inventory_ai"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "app/page.jsx",
+      "source_location": null,
+      "weight": 0.9,
+      "source": "page_feature_cards",
+      "target": "concept_ocr_billing"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "app/page.jsx",
+      "source_location": null,
+      "weight": 0.9,
+      "source": "page_feature_cards",
+      "target": "concept_inventory_ai"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/features/page.jsx",
+      "source_location": null,
+      "weight": 0.8,
+      "source": "page_features_page",
+      "target": "page_feature_cards"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "app/page.jsx",
+      "source_location": null,
+      "weight": 0.7,
+      "source": "page_workflow_points",
+      "target": "concept_ocr_billing"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.9,
+      "source_file": "app/page.jsx",
+      "source_location": null,
+      "weight": 0.9,
+      "source": "page_footer_columns",
+      "target": "page_features_page"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.9,
+      "source_file": "app/page.jsx",
+      "source_location": null,
+      "weight": 0.9,
+      "source": "page_footer_columns",
+      "target": "page_privacy_policy_page"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.9,
+      "source_file": "app/page.jsx",
+      "source_location": null,
+      "weight": 0.9,
+      "source": "page_footer_columns",
+      "target": "page_security_page"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.9,
+      "source_file": "app/page.jsx",
+      "source_location": null,
+      "weight": 0.9,
+      "source": "page_footer_columns",
+      "target": "page_customer_support_page"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "app/features/page.jsx",
+      "source_location": null,
+      "weight": 0.9,
+      "source": "page_features_page",
+      "target": "page_customer_support_page"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "app/customer-support/page.jsx",
+      "source_location": null,
+      "weight": 0.85,
+      "source": "page_customer_support_page",
+      "target": "page_subpage_nav_pattern"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.9,
+      "source_file": "app/customer-support/page.jsx",
+      "source_location": null,
+      "weight": 0.9,
+      "source": "page_customer_support_page",
+      "target": "concept_ocr_billing"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.9,
+      "source_file": "app/customer-support/page.jsx",
+      "source_location": null,
+      "weight": 0.85,
+      "source": "page_customer_support_page",
+      "target": "concept_inventory_ai"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "app/security/page.jsx",
+      "source_location": null,
+      "weight": 0.85,
+      "source": "page_security_page",
+      "target": "page_subpage_nav_pattern"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/security/page.jsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "page_security_page",
+      "target": "concept_hipaa_phi"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.85,
+      "source_file": "app/security/page.jsx",
+      "source_location": null,
+      "weight": 0.8,
+      "source": "page_security_page",
+      "target": "concept_ocr_billing"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "app/security/page.jsx",
+      "source_location": null,
+      "weight": 0.7,
+      "source": "page_security_page",
+      "target": "page_privacy_policy_page"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "app/privacy-policy/page.jsx",
+      "source_location": null,
+      "weight": 0.85,
+      "source": "page_privacy_policy_page",
+      "target": "page_subpage_nav_pattern"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/privacy-policy/page.jsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "page_privacy_policy_page",
+      "target": "concept_camera_ocr"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "app/privacy-policy/page.jsx",
+      "source_location": null,
+      "weight": 0.95,
+      "source": "page_privacy_policy_page",
+      "target": "concept_ocr_billing"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/privacy-policy/page.jsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "page_privacy_policy_page",
+      "target": "privacy_policy_effective_date"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/privacy-policy/page.jsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "page_privacy_policy_page",
+      "target": "privacy_policy_contact_email"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "app/features/page.jsx",
+      "source_location": null,
+      "weight": 0.95,
+      "source": "page_features_page",
+      "target": "concept_ocr_billing"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "app/features/page.jsx",
+      "source_location": null,
+      "weight": 0.85,
+      "source": "page_features_page",
+      "target": "page_subpage_nav_pattern"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.9,
+      "source_file": "app/privacy-policy/page.jsx",
+      "source_location": null,
+      "weight": 0.9,
+      "source": "concept_camera_ocr",
+      "target": "concept_ocr_billing"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/icon.png",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "app_icon_curemitra_app_icon",
+      "target": "app_icon_squircle_shape"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/icon.png",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "app_icon_curemitra_app_icon",
+      "target": "app_icon_diagonal_gradient"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/icon.png",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "app_icon_curemitra_app_icon",
+      "target": "app_icon_white_medical_cross"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "app/icon.png",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "app_icon_curemitra_app_icon",
+      "target": "app_icon_pharmacy_healthcare_identity"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "app/icon.png",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "app_icon_curemitra_app_icon",
+      "target": "app_icon_small_size_recognition"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/icon.png",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "app_icon_diagonal_gradient",
+      "target": "app_icon_teal_navy_tone"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/icon.png",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "app_icon_diagonal_gradient",
+      "target": "app_icon_lime_green_tone"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "app/icon.png",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "app_icon_diagonal_gradient",
+      "target": "app_icon_modern_health_tech_aesthetic"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "app/icon.png",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "app_icon_teal_navy_tone",
+      "target": "app_icon_modern_health_tech_aesthetic"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "app/icon.png",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "app_icon_lime_green_tone",
+      "target": "app_icon_modern_health_tech_aesthetic"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/icon.png",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "app_icon_white_medical_cross",
+      "target": "app_icon_cross_square_grid"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "app/icon.png",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "app_icon_white_medical_cross",
+      "target": "app_icon_pharmacy_healthcare_identity"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "app/icon.png",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "app_icon_white_medical_cross",
+      "target": "app_icon_small_size_recognition"
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "app_icon_visual_composition",
+      "label": "CureMitra Icon Visual Composition",
+      "nodes": [
+        "app_icon_squircle_shape",
+        "app_icon_diagonal_gradient",
+        "app_icon_white_medical_cross"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/icon.png"
+    }
+  ],
+  "built_at_commit": "3d992af85c4bc8abd3cd07819f49e29cb9778b99"
+}

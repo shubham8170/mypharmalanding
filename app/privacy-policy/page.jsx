@@ -1,7 +1,11 @@
-import Link from "next/link";
+import Link from 'next/link';
+import {
+  Pill,
+  ShieldCheck,
+} from 'lucide-react';
 
 export const metadata = {
-  title: "Privacy Policy | CureMitra",
+  title: 'Privacy Policy | CureMitra',
 };
 
 export default function PrivacyPolicyPage() {
@@ -10,7 +14,8 @@ export default function PrivacyPolicyPage() {
       <header className="subpage-topbar">
         <div className="container topbar-inner">
           <Link href="/" className="brand-mark">
-            CureMitra
+            <Pill size={22} className="brand-icon" strokeWidth={2} />
+            <span>CureMitra</span>
           </Link>
           <nav className="top-links">
             <Link href="/">Product</Link>
@@ -18,17 +23,21 @@ export default function PrivacyPolicyPage() {
             <Link href="/security">Security</Link>
             <Link href="/customer-support">Support</Link>
           </nav>
-          <Link href="/" className="btn btn-primary btn-sm">
-            Get Started
-          </Link>
+          <Link href="/" className="btn btn-primary btn-sm">Get Started</Link>
         </div>
       </header>
 
       <section className="sub-hero">
         <div className="container sub-hero-grid">
           <div>
-            <p className="eyebrow">Privacy</p>
-            <h1 className="sub-title">CureMitra Privacy Policy</h1>
+            <div className="eyebrow-badge">
+              <ShieldCheck size={16} />
+              <span>Privacy</span>
+            </div>
+            <h1 className="sub-title">
+              CureMitra{' '}
+              <span className="gradient-text">Privacy Policy</span>
+            </h1>
             <p className="subcopy">
               <strong>Effective date:</strong> 2026-04-16
             </p>
@@ -41,8 +50,8 @@ export default function PrivacyPolicyPage() {
         <div className="container policy-content">
           <p>
             CureMitra (<strong>the App</strong>) is a pharmacy management
-            application. This Privacy Policy explains how information is
-            collected, used, and shared when you use the App.
+            application. This Privacy Policy explains how information is collected,
+            used, and shared when you use the App.
           </p>
 
           <h2>Information We Collect</h2>
@@ -54,31 +63,38 @@ export default function PrivacyPolicyPage() {
             </li>
             <li>
               <strong>Pharmacy &amp; business data</strong>: inventory items,
-              invoices/billing details, vendor/doctor/patient information you
-              enter.
+              invoices/billing details, vendor/doctor/patient information you enter.
             </li>
             <li>
               <strong>Images you choose to provide</strong>: photos or scans you
-              capture or upload (for example prescriptions, invoices, medicine
-              strip photos, or profile photo).
+              capture or upload (for example prescriptions, invoices, medicine strip
+              photos, or profile photo).
             </li>
             <li>
-              <strong>Device/app data</strong>: basic diagnostic information
-              needed to operate and troubleshoot the App.
+              <strong>Device/app data</strong>: basic diagnostic information needed
+              to operate and troubleshoot the App.
             </li>
           </ul>
 
           <h2>Camera Permission</h2>
-          <p>The App requests <strong>Camera</strong> permission to enable features such as:</p>
+          <p>
+            The App requests <strong>Camera</strong> permission to enable features
+            such as:
+          </p>
           <ul>
             <li>
               capturing images for <strong>OCR / extraction</strong> (e.g.,
               prescriptions, invoices, medicine photos),
             </li>
             <li>uploading a <strong>profile photo</strong>,</li>
-            <li>scanning documents to speed up inventory/billing workflows.</li>
+            <li>
+              scanning documents to speed up inventory/billing workflows.
+            </li>
           </ul>
-          <p>The App does not access the camera unless you open a feature that requires it.</p>
+          <p>
+            The App does not access the camera unless you open a feature that
+            requires it.
+          </p>
 
           <h2>How We Use Your Information</h2>
           <p>We use the collected information to:</p>
@@ -93,9 +109,9 @@ export default function PrivacyPolicyPage() {
 
           <h2>Image Processing &amp; Sharing</h2>
           <p>
-            When you use OCR/extraction features, images and/or extracted text
-            may be <strong>uploaded to our backend servers and/or third-party
-            service providers</strong> solely to provide these features.
+            When you use OCR/extraction features, images and/or extracted text may
+            be <strong>uploaded to our backend servers and/or third-party service
+            providers</strong> solely to provide these features.
           </p>
           <ul>
             <li>We only process images you explicitly capture or upload.</li>
@@ -105,15 +121,15 @@ export default function PrivacyPolicyPage() {
           <h2>Data Retention</h2>
           <p>
             We retain data for as long as needed to provide the service, comply
-            with legal obligations, resolve disputes, and enforce agreements. If
-            you request deletion, we will take reasonable steps to delete your
-            data, subject to legal and operational requirements.
+            with legal obligations, resolve disputes, and enforce agreements. If you
+            request deletion, we will take reasonable steps to delete your data,
+            subject to legal and operational requirements.
           </p>
 
           <h2>Security</h2>
           <p>
-            We take reasonable steps to protect your information. However, no
-            method of transmission or storage is 100% secure.
+            We take reasonable steps to protect your information. However, no method
+            of transmission or storage is 100% secure.
           </p>
 
           <h2>Your Choices</h2>
@@ -131,7 +147,7 @@ export default function PrivacyPolicyPage() {
           <h2>Contact Us</h2>
           <p>If you have any questions about this Privacy Policy, contact:</p>
           <p>
-            <strong>Email:</strong>{" "}
+            <strong>Email:</strong>{' '}
             <a href="mailto:shubhambiswas024@gmail.com">
               shubhambiswas024@gmail.com
             </a>
@@ -141,4 +157,3 @@ export default function PrivacyPolicyPage() {
     </main>
   );
 }
-

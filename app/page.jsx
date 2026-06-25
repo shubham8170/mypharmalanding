@@ -1,130 +1,324 @@
-import Link from "next/link";
+'use client';
 
+import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import {
+  ScanLine,
+  PackageOpen,
+  CalendarCheck,
+  ShieldCheck,
+  Zap,
+  TrendingUp,
+  ArrowRight,
+  ChevronRight,
+  Star,
+  Pill,
+  Activity,
+  HeartPulse,
+  Microscope,
+  Stethoscope,
+  Smartphone,
+  Lock,
+  Clock,
+  Users,
+} from 'lucide-react';
+
+/* ─────────── Particle Canvas ─────────── */
+function ParticleCanvas() {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let animId;
+    let w, h;
+    const particles = [];
+    const PARTICLE_COUNT = 80;
+    const CONNECTION_DIST = 120;
+
+    function resize() {
+      w = canvas.width = canvas.offsetWidth * window.devicePixelRatio;
+      h = canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    }
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * (w / window.devicePixelRatio);
+        this.y = Math.random() * (h / window.devicePixelRatio);
+        this.vx = (Math.random() - 0.5) * 0.6;
+        this.vy = (Math.random() - 0.5) * 0.6;
+        this.radius = Math.random() * 2 + 1;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        const W = w / window.devicePixelRatio;
+        const H = h / window.devicePixelRatio;
+        if (this.x < 0 || this.x > W) this.vx *= -1;
+        if (this.y < 0 || this.y > H) this.vy *= -1;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(14, 165, 233, 0.6)';
+        ctx.fill();
+      }
+    }
+
+    function init() {
+      resize();
+      for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(new Particle());
+    }
+
+    function animate() {
+      const W = w / window.devicePixelRatio;
+      const H = h / window.devicePixelRatio;
+      ctx.clearRect(0, 0, W, H);
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < CONNECTION_DIST) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(14, 165, 233, ${0.15 * (1 - dist / CONNECTION_DIST)})`;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        }
+      }
+      animId = requestAnimationFrame(animate);
+    }
+
+    init();
+    animate();
+    window.addEventListener('resize', resize);
+
+    return () => {
+      cancelAnimationFrame(animId);
+      window.removeEventListener('resize', resize);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{
+        position: 'absolute',
+        inset: 0,
+        width: '100%',
+        height: '100%',
+        zIndex: 0,
+        pointerEvents: 'none',
+      }}
+    />
+  );
+}
+
+/* ─────────── 3D Card Component ─────────── */
+function Card3D({ children, className = '', style = {} }) {
+  const cardRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    const card = cardRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = (y - centerY) / 15;
+    const rotateY = (centerX - x) / 15;
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+  };
+
+  const handleMouseLeave = () => {
+    const card = cardRef.current;
+    if (!card) return;
+    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+  };
+
+  return (
+    <div
+      ref={cardRef}
+      className={className}
+      style={{
+        transition: 'transform 0.15s ease-out',
+        transformStyle: 'preserve-3d',
+        ...style,
+      }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      {children}
+    </div>
+  );
+}
+
+/* ─────────── Feature Card ─────────── */
+function FeatureCard({ icon: Icon, title, text, delay }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.6, delay }}
+    >
+      <Card3D className="feature-card" style={{ transform: 'translateZ(0)' }}>
+        <div className="feature-icon-wrap">
+          <Icon size={28} strokeWidth={1.5} />
+        </div>
+        <h3>{title}</h3>
+        <p>{text}</p>
+      </Card3D>
+    </motion.div>
+  );
+}
+
+/* ─────────── Stats Counter ─────────── */
+function AnimatedCounter({ value, suffix = '', label }) {
+  const ref = useRef(null);
+  const [count, setCount] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+          let start = 0;
+          const duration = 2000;
+          const startTime = performance.now();
+          const animate = (now) => {
+            const progress = Math.min((now - startTime) / duration, 1);
+            const ease = 1 - Math.pow(1 - progress, 3);
+            start = Math.floor(ease * value);
+            setCount(start);
+            if (progress < 1) requestAnimationFrame(animate);
+          };
+          requestAnimationFrame(animate);
+        }
+      },
+      { threshold: 0.3 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [hasAnimated, value]);
+
+  return (
+    <div ref={ref} className="stat-item">
+      <div className="stat-value">
+        {count}
+        {suffix}
+      </div>
+      <div className="stat-label">{label}</div>
+    </div>
+  );
+}
+
+/* ─────────── Data ─────────── */
 const ANDROID_APP_DRIVE_URL =
-  "https://drive.google.com/drive/folders/16O7LgzrYN4GziEUktbibBWYxwvXeYQab?usp=drive_link";
+  'https://drive.google.com/drive/folders/16O7LgzrYN4GziEUktbibBWYxwvXeYQab?usp=drive_link';
 
-const featureCards = [
+const features = [
   {
-    title: "Scan & Bill in Seconds",
-    text: "Advanced OCR technology interprets prescriptions and invoices with 99.9% accuracy, auto-filling your billing engine instantly.",
+    icon: ScanLine,
+    title: 'Scan & Bill in Seconds',
+    text: 'Advanced OCR technology interprets prescriptions and invoices with 99.9% accuracy, auto-filling your billing engine instantly.',
   },
   {
-    title: "Never Out of Stock",
-    text: "AI-driven inventory management predicts demand peaks and automates reordering before you even notice a shortage.",
+    icon: PackageOpen,
+    title: 'Never Out of Stock',
+    text: 'AI-driven inventory management predicts demand peaks and automates reordering before you even notice a shortage.',
   },
   {
-    title: "Effortless Appointments",
-    text: "Integrated patient portal for seamless scheduling that syncs directly with clinical staff availability and billing records.",
+    icon: CalendarCheck,
+    title: 'Effortless Appointments',
+    text: 'Integrated patient portal for seamless scheduling that syncs directly with clinical staff availability and billing records.',
   },
 ];
 
 const workflowPoints = [
   {
-    title: "Automatic Compliance",
-    text: "Generate tax-ready invoices with policy-aligned validation and audit trails.",
+    icon: ShieldCheck,
+    title: 'Automatic Compliance',
+    text: 'Generate tax-ready invoices with policy-aligned validation and audit trails.',
   },
   {
-    title: "Predictive Intelligence",
-    text: "Forecast stock shortages and optimize procurement before disruption occurs.",
+    icon: Zap,
+    title: 'Predictive Intelligence',
+    text: 'Forecast stock shortages and optimize procurement before disruption occurs.',
   },
   {
-    title: "Real-time Synchronization",
-    text: "Billing, inventory, and appointments stay in sync across every channel.",
+    icon: TrendingUp,
+    title: 'Real-time Synchronization',
+    text: 'Billing, inventory, and appointments stay in sync across every channel.',
   },
 ];
+
+const stats = [
+  { value: 99, suffix: '.9%', label: 'OCR Accuracy' },
+  { value: 40, suffix: '%', label: 'Efficiency Boost' },
+  { value: 500, suffix: '+', label: 'Clinics Trust Us' },
+  { value: 24, suffix: '/7', label: 'AI Monitoring' },
+];
+
+const trustBadges = ['Core Partners', 'MediLab', 'Clinical+', 'Care Connect', 'Top Pharmasoft'];
 
 const footerColumns = [
   {
-    heading: "Solutions",
+    heading: 'Solutions',
     links: [
-      { label: "Billing OCR", href: "/features" },
-      { label: "Inventory AI", href: "/features" },
-      { label: "Clinic Management", href: "/features" },
+      { label: 'Billing OCR', href: '/features' },
+      { label: 'Inventory AI', href: '/features' },
+      { label: 'Clinic Management', href: '/features' },
     ],
   },
   {
-    heading: "Company",
+    heading: 'Company',
     links: [
-      { label: "About Us", href: "/" },
-      { label: "Privacy Policy", href: "/privacy-policy" },
-      { label: "Security", href: "/security" },
+      { label: 'About Us', href: '/' },
+      { label: 'Privacy Policy', href: '/privacy-policy' },
+      { label: 'Security', href: '/security' },
     ],
   },
   {
-    heading: "Support",
+    heading: 'Support',
     links: [
-      { label: "Customer Support", href: "/customer-support" },
-      { label: "Documentation", href: "/customer-support" },
-      { label: "Status", href: "/customer-support" },
+      { label: 'Customer Support', href: '/customer-support' },
+      { label: 'Documentation', href: '/customer-support' },
+      { label: 'Status', href: '/customer-support' },
     ],
   },
 ];
 
-const trustBadges = ["Core Partners", "MediLab", "Clinical+", "Care Connect", "Top Pharmasoft"];
-
-function Icon({ type }) {
-  if (type === "arrow") {
-    return (
-      <svg viewBox="0 0 20 20" aria-hidden="true">
-        <path d="M4 10h10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-        <path d="M10 5l5 5-5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    );
-  }
-  if (type === "scan") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <rect x="4" y="4" width="16" height="16" rx="3" fill="none" stroke="currentColor" strokeWidth="1.8" />
-        <path d="M8 12h8M8 9h4M8 15h6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-      </svg>
-    );
-  }
-  if (type === "stock") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M6 17V7m6 10V4m6 13v-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-        <circle cx="6" cy="18" r="2" fill="currentColor" />
-        <circle cx="12" cy="4" r="2" fill="currentColor" />
-        <circle cx="18" cy="12" r="2" fill="currentColor" />
-      </svg>
-    );
-  }
-  if (type === "calendar") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <rect x="4" y="5" width="16" height="15" rx="3" fill="none" stroke="currentColor" strokeWidth="1.8" />
-        <path d="M8 3v4M16 3v4M4 10h16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-      </svg>
-    );
-  }
-  if (type === "shield") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 3l7 3v6c0 4.6-3.1 7.8-7 9-3.9-1.2-7-4.4-7-9V6l7-3z" fill="none" stroke="currentColor" strokeWidth="1.8" />
-        <path d="M9.5 12.5l1.7 1.8 3.3-3.6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    );
-  }
-  if (type === "spark") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2L12 3z" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-      </svg>
-    );
-  }
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="1.8" />
-    </svg>
-  );
-}
-
+/* ═══════════════════ PAGE ═══════════════════ */
 export default function HomePage() {
+  const { scrollYProgress } = useScroll();
+  const heroY = useTransform(scrollYProgress, [0, 0.3], [0, -80]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+
   return (
     <main className="page">
-      <header className="topbar">
+      {/* ── Header ── */}
+      <motion.header
+        className="topbar"
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+      >
         <div className="container topbar-inner">
-          <p className="brand-mark">CureMitra</p>
+          <div className="brand-mark">
+            <Pill size={22} className="brand-icon" strokeWidth={2} />
+            <span>CureMitra</span>
+          </div>
           <nav className="top-links">
             <Link href="/">Product</Link>
             <Link href="/features">Features</Link>
@@ -133,24 +327,57 @@ export default function HomePage() {
           </nav>
           <button className="btn btn-primary btn-sm">Get Started</button>
         </div>
-      </header>
+      </motion.header>
 
+      {/* ── Hero ── */}
       <section className="hero">
-        <div className="container hero-grid">
+        <ParticleCanvas />
+        <div className="hero-orb hero-orb-1" />
+        <div className="hero-orb hero-orb-2" />
+        <div className="hero-orb hero-orb-3" />
+
+        <motion.div className="container hero-grid" style={{ y: heroY, opacity: heroOpacity }}>
           <div className="hero-copy">
-            <p className="eyebrow">CureMitra</p>
-            <h1>Streamline Your Pharmacy &amp; Clinic</h1>
-            <p className="subcopy">
+            <motion.div
+              className="eyebrow-badge"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+            >
+              <Activity size={16} />
+              <span>Next-Gen Healthcare OS</span>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.7 }}
+            >
+              Streamline Your
+              <span className="gradient-text"> Pharmacy </span>
+              &amp; Clinic
+            </motion.h1>
+
+            <motion.p
+              className="subcopy"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.6 }}
+            >
               Automate complex billing workflows with clinical-grade OCR. Reduce
-              administrative overhead, synchronize AI-driven inventory, and
-              focus more on patient care.
-            </p>
-            <div className="hero-actions">
-              <button className="btn btn-primary">
+              administrative overhead, synchronize AI-driven inventory, and focus
+              more on patient care.
+            </motion.p>
+
+            <motion.div
+              className="hero-actions"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.6 }}
+            >
+              <button className="btn btn-primary glow">
                 Get Started
-                <span className="btn-icon">
-                  <Icon type="arrow" />
-                </span>
+                <ArrowRight size={18} />
               </button>
               <a
                 className="btn btn-secondary"
@@ -158,114 +385,301 @@ export default function HomePage() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Download Android App
+                <Smartphone size={18} />
+                Android App
               </a>
-              <Link className="btn btn-secondary" href="/privacy-policy">
-                Privacy Policy
-              </Link>
-            </div>
+            </motion.div>
+
+            <motion.div
+              className="hero-proof"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.2, duration: 0.6 }}
+            >
+              <div className="avatar-stack">
+                {[1, 2, 3, 4].map((i) => (
+                  <div key={i} className="avatar" style={{ backgroundPosition: `-${i * 40}px 0` }} />
+                ))}
+              </div>
+              <div className="hero-proof-text">
+                <div className="stars">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <Star key={i} size={14} fill="#f59e0b" stroke="#f59e0b" />
+                  ))}
+                </div>
+                <span>Trusted by 500+ healthcare facilities</span>
+              </div>
+            </motion.div>
           </div>
-          <div className="hero-visual">
-            <div className="mock-panel" />
-            <div className="mock-floating">99.9% OCR Accuracy</div>
+
+          {/* 3D Hero Visual */}
+          <motion.div
+            className="hero-visual"
+            initial={{ opacity: 0, scale: 0.85, rotateY: 15 }}
+            animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+            transition={{ delay: 0.5, duration: 1, type: 'spring' }}
+            style={{ perspective: 1200 }}
+          >
+            <Card3D className="hero-card-3d" style={{ width: '100%' }}>
+              <div className="hero-card-glow" />
+              <div className="hero-card-content">
+                <div className="hero-card-header">
+                  <div className="hero-card-dots">
+                    <span />
+                    <span />
+                    <span />
+                  </div>
+                  <div className="hero-card-badge">
+                    <HeartPulse size={14} />
+                    Live
+                  </div>
+                </div>
+                <div className="hero-card-body">
+                  <div className="scan-animation">
+                    <div className="scan-line" />
+                    <div className="scan-doc">
+                      <div className="scan-line-placeholder" />
+                      <div className="scan-line-placeholder short" />
+                      <div className="scan-line-placeholder" />
+                      <div className="scan-line-placeholder short" />
+                    </div>
+                  </div>
+                  <div className="ocr-result">
+                    <div className="ocr-row">
+                      <Microscope size={16} />
+                      <span>Paracetamol 500mg</span>
+                      <strong className="ocr-match">99.9% match</strong>
+                    </div>
+                    <div className="ocr-row">
+                      <Pill size={16} />
+                      <span>Amoxicillin 250mg</span>
+                      <strong className="ocr-match">99.8% match</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Card3D>
+
+            <motion.div
+              className="floating-stat"
+              animate={{ y: [0, -12, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <div className="floating-stat-icon">
+                <ScanLine size={20} />
+              </div>
+              <div>
+                <div className="floating-stat-value">99.9%</div>
+                <div className="floating-stat-label">OCR Accuracy</div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="floating-stat floating-stat-2"
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+            >
+              <div className="floating-stat-icon green">
+                <TrendingUp size={20} />
+              </div>
+              <div>
+                <div className="floating-stat-value">+40%</div>
+                <div className="floating-stat-label">Efficiency</div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* ── Stats ── */}
+      <section className="stats-section">
+        <div className="container">
+          <div className="stats-grid">
+            {stats.map((s, i) => (
+              <motion.div
+                key={s.label}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+              >
+                <AnimatedCounter value={s.value} suffix={s.suffix} label={s.label} />
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
+      {/* ── Social Proof ── */}
       <section className="social-proof">
         <div className="container">
-          <p>Trusted by pharmacies, clinics, and healthcare teams</p>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            Trusted by pharmacies, clinics, and healthcare teams
+          </motion.p>
           <div className="trust-grid">
-            {trustBadges.map((badge) => (
-              <span key={badge}>
-                <span className="badge-icon">
-                  <Icon type="shield" />
-                </span>
+            {trustBadges.map((badge, i) => (
+              <motion.span
+                key={badge}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08, duration: 0.4 }}
+              >
+                <ShieldCheck size={16} />
                 {badge}
-              </span>
+              </motion.span>
             ))}
           </div>
         </div>
       </section>
 
+      {/* ── Features ── */}
       <section className="features">
         <div className="container">
-          <h2>Optimized for Clinical Efficiency</h2>
-          <p className="section-sub">
-            Purpose-built modules that reduce friction across billing, stock,
-            and operations.
-          </p>
+          <motion.div
+            className="section-header"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2>
+              Optimized for
+              <span className="gradient-text"> Clinical Efficiency</span>
+            </h2>
+            <p className="section-sub">
+              Purpose-built modules that reduce friction across billing, stock, and
+              operations.
+            </p>
+          </motion.div>
           <div className="feature-grid">
-            {featureCards.map((card, index) => (
-              <article className="card" key={card.title}>
-                <div className="icon-dot">
-                  <Icon type={index === 0 ? "scan" : index === 1 ? "stock" : "calendar"} />
-                </div>
-                <h3>{card.title}</h3>
-                <p>{card.text}</p>
-              </article>
+            {features.map((f, i) => (
+              <FeatureCard key={f.title} icon={f.icon} title={f.title} text={f.text} delay={i * 0.15} />
             ))}
           </div>
         </div>
       </section>
 
+      {/* ── Workflow ── */}
       <section className="workflow">
         <div className="container workflow-grid">
-          <div>
-            <h2>Unified Workflow, Zero Friction.</h2>
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.7 }}
+          >
+            <h2>
+              Unified Workflow,
+              <span className="gradient-text"> Zero Friction</span>
+            </h2>
             <p className="section-sub">
               One source of truth for your entire clinical operations.
             </p>
             <div className="workflow-list">
-              {workflowPoints.map((point) => (
-                <div className="workflow-item" key={point.title}>
-                  <div className="icon-dot sm">
-                    <Icon type={point.title === "Automatic Compliance" ? "shield" : point.title === "Predictive Intelligence" ? "spark" : "stock"} />
+              {workflowPoints.map((point, i) => (
+                <motion.div
+                  className="workflow-item"
+                  key={point.title}
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.12, duration: 0.5 }}
+                >
+                  <div className="workflow-icon">
+                    <point.icon size={22} />
                   </div>
                   <div>
                     <h4>{point.title}</h4>
                     <p>{point.text}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
-          <div className="workflow-visual">
-            <div className="mock-panel large" />
-            <div className="workflow-float">
-              <p className="label">Billing Efficiency</p>
-              <p className="value">+40%</p>
+          </motion.div>
+
+          <motion.div
+            className="workflow-visual"
+            initial={{ opacity: 0, x: 40, scale: 0.95 }}
+            whileInView={{ opacity: 1, x: 0, scale: 1 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <div className="workflow-visual-inner">
+              <div className="workflow-ring ring-1" />
+              <div className="workflow-ring ring-2" />
+              <div className="workflow-ring ring-3" />
+              <div className="workflow-center">
+                <Stethoscope size={40} />
+              </div>
+              <div className="workflow-node node-1">
+                <Lock size={18} />
+                <span>Secure</span>
+              </div>
+              <div className="workflow-node node-2">
+                <Clock size={18} />
+                <span>Real-time</span>
+              </div>
+              <div className="workflow-node node-3">
+                <Users size={18} />
+                <span>Collaborative</span>
+              </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
+      {/* ── CTA ── */}
       <section className="cta">
-        <div className="container cta-box">
-          <h2>Ready to Elevate Your Practice?</h2>
-          <p>
-            Bring OCR-first billing, predictive inventory, and reliable patient
-            workflows into one precision platform.
-          </p>
-          <div className="hero-actions center">
-            <button className="btn btn-primary">
-              Start Free Trial
-              <span className="btn-icon">
-                <Icon type="arrow" />
-              </span>
-            </button>
-            <button className="btn btn-secondary">Talk to Sales</button>
-          </div>
+        <div className="container">
+          <motion.div
+            className="cta-box"
+            initial={{ opacity: 0, y: 50, scale: 0.97 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.8, type: 'spring' }}
+          >
+            <div className="cta-glow" />
+            <div className="cta-stars">
+              {[...Array(20)].map((_, i) => (
+                <div key={i} className="cta-star" style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 3}s`,
+                }} />
+              ))}
+            </div>
+            <h2>Ready to Elevate Your Practice?</h2>
+            <p>
+              Bring OCR-first billing, predictive inventory, and reliable patient
+              workflows into one precision platform.
+            </p>
+            <div className="hero-actions center">
+              <button className="btn btn-white glow">
+                Start Free Trial
+                <ArrowRight size={18} />
+              </button>
+              <button className="btn btn-outline">Talk to Sales</button>
+            </div>
+          </motion.div>
         </div>
       </section>
 
+      {/* ── Footer ── */}
       <footer className="footer">
         <div className="container footer-grid">
           <div className="brand">
-            <h5>CureMitra</h5>
+            <div className="brand-mark">
+              <Pill size={22} className="brand-icon" strokeWidth={2} />
+              <span>CureMitra</span>
+            </div>
             <p>
-              Smart OCR and billing for the modern healthcare facility.
-              Precision engineering for clinical excellence.
+              Smart OCR and billing for the modern healthcare facility. Precision
+              engineering for clinical excellence.
             </p>
           </div>
           {footerColumns.map((column) => (
@@ -274,7 +688,10 @@ export default function HomePage() {
               <ul>
                 {column.links.map((link) => (
                   <li key={link.label}>
-                    <Link href={link.href}>{link.label}</Link>
+                    <Link href={link.href}>
+                      <ChevronRight size={14} />
+                      {link.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
