@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import logoImg from '../assets/logo.png';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Pill,
@@ -198,7 +199,7 @@ export default function PrivacyPolicyPage() {
       >
         <div className="container topbar-inner">
           <Link href="/" className="brand-mark">
-            <Pill size={22} className="brand-icon" strokeWidth={2} />
+            <img src={logoImg.src} alt="CureMitra Logo" className="brand-logo" />
             <span>CureMitra</span>
           </Link>
           <nav className="top-links">
@@ -400,7 +401,7 @@ export default function PrivacyPolicyPage() {
         <div className="container footer-grid">
           <div className="brand">
             <Link href="/" className="brand-mark">
-              <Pill size={22} className="brand-icon" strokeWidth={2} />
+              <img src={logoImg.src} alt="CureMitra Logo" className="brand-logo" />
               <span>CureMitra</span>
             </Link>
             <p>
