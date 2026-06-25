@@ -1011,6 +1011,65 @@ li a svg {
   opacity: 0.6;
 }
 
+/* ── Mobile Menu toggle & navigation drawer ── */
+.mobile-menu-btn {
+  display: none;
+  background: transparent;
+  border: 0;
+  color: var(--text);
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1010;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(10, 14, 26, 0.97);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  padding: 40px;
+}
+
+.mobile-menu a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.mobile-menu a:hover {
+  color: var(--primary);
+}
+
+.mobile-menu .btn {
+  margin-top: 16px;
+  width: 200px;
+  justify-content: center;
+}
+
+@media (max-width: 980px) {
+  .mobile-menu-btn {
+    display: flex;
+  }
+  
+  .header-cta {
+    display: none;
+  }
+}
+
 /* ─────────── Responsive ─────────── */
 @media (max-width: 980px) {
   .topbar {
@@ -1027,7 +1086,8 @@ li a svg {
   }
 
   .container {
-    width: min(420px, calc(100% - 32px));
+    width: calc(100% - 32px);
+    max-width: 680px;
   }
 
   .hero {
@@ -1077,9 +1137,17 @@ li a svg {
   }
 
   .trust-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    justify-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 28px;
+    justify-content: center;
+  }
+
+  @media (max-width: 480px) {
+    .floating-stat,
+    .floating-stat-2 {
+      display: none;
+    }
   }
 
   .features,

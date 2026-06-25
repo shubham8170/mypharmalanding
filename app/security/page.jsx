@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   Pill,
   ShieldCheck,
@@ -13,6 +13,8 @@ import {
   KeyRound,
   Database,
   ChevronRight,
+  Menu,
+  X,
 } from 'lucide-react';
 
 /* ─────────── Particle Canvas ─────────── */
@@ -187,6 +189,7 @@ const footerColumns = [
 ];
 
 export default function SecurityPage() {
+  const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
     document.title = 'Security | CureMitra';
   }, []);
@@ -216,8 +219,30 @@ export default function SecurityPage() {
             <Link href="/security">Security</Link>
             <Link href="/customer-support">Support</Link>
           </nav>
-          <Link href="/" className="btn btn-primary btn-sm">Get Started</Link>
+          <Link href="/" className="btn btn-primary btn-sm header-cta">Get Started</Link>
+          
+          <button className="mobile-menu-btn" onClick={() => setMenuOpen(!menuOpen)}>
+            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
+
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.div
+              className="mobile-menu"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Link href="/" onClick={() => setMenuOpen(false)}>Product</Link>
+              <Link href="/features" onClick={() => setMenuOpen(false)}>Features</Link>
+              <Link href="/security" onClick={() => setMenuOpen(false)}>Security</Link>
+              <Link href="/customer-support" onClick={() => setMenuOpen(false)}>Support</Link>
+              <Link href="/" className="btn btn-primary" onClick={() => setMenuOpen(false)}>Get Started</Link>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.header>
 
       {/* ── Sub-Hero ── */}

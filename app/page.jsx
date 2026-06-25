@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import {
   ScanLine,
   PackageOpen,
@@ -22,6 +22,8 @@ import {
   Lock,
   Clock,
   Users,
+  Menu,
+  X,
 } from 'lucide-react';
 
 /* ─────────── Particle Canvas ─────────── */
@@ -301,6 +303,7 @@ const footerColumns = [
 
 /* ═══════════════════ PAGE ═══════════════════ */
 export default function HomePage() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const { scrollYProgress } = useScroll();
   const heroY = useTransform(scrollYProgress, [0, 0.3], [0, -80]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
@@ -325,8 +328,30 @@ export default function HomePage() {
             <Link href="/security">Security</Link>
             <Link href="/customer-support">Support</Link>
           </nav>
-          <button className="btn btn-primary btn-sm">Get Started</button>
+          <button className="btn btn-primary btn-sm header-cta">Get Started</button>
+          
+          <button className="mobile-menu-btn" onClick={() => setMenuOpen(!menuOpen)}>
+            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
+
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.div
+              className="mobile-menu"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Link href="/" onClick={() => setMenuOpen(false)}>Product</Link>
+              <Link href="/features" onClick={() => setMenuOpen(false)}>Features</Link>
+              <Link href="/security" onClick={() => setMenuOpen(false)}>Security</Link>
+              <Link href="/customer-support" onClick={() => setMenuOpen(false)}>Support</Link>
+              <button className="btn btn-primary" onClick={() => setMenuOpen(false)}>Get Started</button>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.header>
 
       {/* ── Hero ── */}
