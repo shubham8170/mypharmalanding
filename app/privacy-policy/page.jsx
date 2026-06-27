@@ -289,107 +289,83 @@ export default function PrivacyPolicyPage() {
             transition={{ duration: 0.8 }}
           >
             <p>
-              CureMitra (<strong>the App</strong>) is a pharmacy management
-              application. This Privacy Policy explains how information is collected,
-              used, and shared when you use the App.
+              CureMitra (<strong>the App</strong>), also referred to as <strong>MyPharma</strong>, is a next-generation pharmacy management and clinical intelligence platform. This Privacy Policy outlines how CureMitra collects, processes, secures, and discloses user, pharmacy, and patient data.
             </p>
 
-            <h2>Information We Collect</h2>
-            <p>Depending on which features you use, we may collect:</p>
-            <ul>
-              <li>
-                <strong>Account information</strong>: such as phone number (for OTP
-                login) and profile details you provide.
-              </li>
-              <li>
-                <strong>Pharmacy &amp; business data</strong>: inventory items,
-                invoices/billing details, vendor/doctor/patient information you enter.
-              </li>
-              <li>
-                <strong>Images you choose to provide</strong>: photos or scans you
-                capture or upload (for example prescriptions, invoices, medicine strip
-                photos, or profile photo).
-              </li>
-              <li>
-                <strong>Device/app data</strong>: basic diagnostic information needed
-                to operate and troubleshoot the App.
-              </li>
-            </ul>
-
-            <h2>Camera Permission</h2>
+            <h2>1. Information We Collect &amp; Database Governance</h2>
             <p>
-              The App requests <strong>Camera</strong> permission to enable features
-              such as:
+              Depending on the modules utilized across our mobile app, desktop dashboard, and server endpoints, we process and store the following structural data in our database:
             </p>
             <ul>
               <li>
-                capturing images for <strong>OCR / extraction</strong> (e.g.,
-                prescriptions, invoices, medicine photos),
+                <strong>Account &amp; User Profiles</strong>: Phone numbers (used for secure SMS-based OTP validation), user display names, ages, profile photo URLs, active device FCM tokens, session keys, and Razorpay subscription IDs.
               </li>
-              <li>uploading a <strong>profile photo</strong>,</li>
               <li>
-                scanning documents to speed up inventory/billing workflows.
+                <strong>Pharmacy &amp; Business Metadata</strong>: Store names, pharmacy addresses, drug license numbers, GSTIN details (GSTLegalName, GSTTradeName, state codes, and registration types), stock transfer transit records, current inventories, and auto-ordering configurations.
+              </li>
+              <li>
+                <strong>Distributor &amp; Purchase Data</strong>: Vendor contact numbers, distributor names, scanned vendor purchase invoices (including raw scanned PDF text and image URLs), purchase orders, and auto-order logs.
+              </li>
+              <li>
+                <strong>Patient Records &amp; Patient Accounts</strong>: Patient names, phone numbers, emergency contact details, blood groups, heights, weights, blood pressure logs, medical histories, vaccination files, and medicine usage timelines.
+              </li>
+              <li>
+                <strong>Transactional &amp; Invoice Billing</strong>: Total amounts, CGST/SGST/IGST/cess tax allocations, reverse charge indicators, buyer GSTINs, and digital signature URLs.
               </li>
             </ul>
-            <p>
-              The App does not access the camera unless you open a feature that
-              requires it.
-            </p>
 
-            <h2>How We Use Your Information</h2>
-            <p>We use the collected information to:</p>
-            <ul>
-              <li>
-                provide core features (login, pharmacy setup, inventory, billing,
-                CRM, notifications),
-              </li>
-              <li>process OCR/extraction requests you initiate,</li>
-              <li>improve reliability, performance, and support.</li>
-            </ul>
-
-            <h2>Image Processing &amp; Sharing</h2>
+            <h2>2. Mobile Device Hardware Permissions &amp; Data Access</h2>
             <p>
-              When you use OCR/extraction features, images and/or extracted text may
-              be <strong>uploaded to our backend servers and/or third-party service
-              providers</strong> solely to provide these features.
+              To deliver clinical-grade OCR scanning, automatic billing, and local deliveries, our mobile application requests access to the following device hardware:
             </p>
             <ul>
-              <li>We only process images you explicitly capture or upload.</li>
-              <li>We do not sell your images or personal data.</li>
+              <li>
+                <strong>Camera &amp; Photo Library</strong>: Accessed to snap pictures or upload copies of prescriptions, medicine strips, and invoices to interpret medicine names and tax lines via Google ML Kit Text Recognition OCR.
+              </li>
+              <li>
+                <strong>Geolocated Location (GPS)</strong>: Accessed to retrieve fine latitude and longitude coordinates to verify delivery drop-offs and track live courier routes. This coordinate access is enabled only with explicit location permissions.
+              </li>
+              <li>
+                <strong>Bluetooth &amp; Nearby Devices</strong>: Accessed to search for, connect to, and print physical invoices and receipts using local Bluetooth thermal receipt printers.
+              </li>
+              <li>
+                <strong>Notifications</strong>: Accessed to dispatch alerts regarding low-stock alerts, medicine expiry timelines, and delivery statuses.
+              </li>
             </ul>
 
-            <h2>Data Retention</h2>
+            <h2>3. Third-Party Integrations &amp; Data Synchronization</h2>
             <p>
-              We retain data for as long as needed to provide the service, comply
-              with legal obligations, resolve disputes, and enforce agreements. If you
-              request deletion, we will take reasonable steps to delete your data,
-              subject to legal and operational requirements.
+              CureMitra syncs information with external partners to automate business operations. We maintain strict compliance boundaries when integrating with:
             </p>
-
-            <h2>Security</h2>
-            <p>
-              We take reasonable steps to protect your information. However, no method
-              of transmission or storage is 100% secure.
-            </p>
-
-            <h2>Your Choices</h2>
             <ul>
               <li>
-                You can deny camera permission, but OCR/scanning features may not
-                work.
+                <strong>GSP Sync Providers (Cleartax, Mastersindia, Vayana)</strong>: Invoices and tax reports are synchronized directly with Cleartax, Mastersindia, or Vayana APIs to automate return filing (GSTR-1 return filing preparation).
               </li>
               <li>
-                You can choose not to upload images; related features will be
-                unavailable.
+                <strong>Razorpay Payment Gateways</strong>: Payments and billing subscriptions are handled securely via Razorpay's PCI-compliant infrastructure.
+              </li>
+              <li>
+                <strong>Notification Dispatchers (WhatsApp, Email, SMS)</strong>: SMS, email, and WhatsApp APIs are used to send purchase orders, low-stock alerts, and reminders to patients and distributors.
               </li>
             </ul>
 
-            <h2>Contact Us</h2>
-            <p>If you have any questions about this Privacy Policy, contact:</p>
+            <h2>4. Data Retention &amp; Security Standards</h2>
+            <p>
+              We enforce role-based access control (RBAC) layers (ADMIN, PHARMACIST, MANAGER, SALESMAN) for store access permissions. Database tables are protected by end-to-end encryption in transit. We retain personal and clinical files as long as your pharmacy account is active. If you request deletion, we take reasonable steps to purge account records, subject to legal, tax, or medical audit guidelines.
+            </p>
+
+            <h2>5. Your Choices &amp; Control</h2>
+            <ul>
+              <li>You can enable or disable GPS tracking, camera access, and Bluetooth printer permissions in your system settings. Disabling permissions will limit related scanning, delivery, and printing modules.</li>
+              <li>You can request access to your records, request data portability exports, or initiate account deletion.</li>
+            </ul>
+
+            <h2>6. Contact Us</h2>
+            <p>If you have any questions about this Privacy Policy or data access compliance, please reach out to us at:</p>
             <p style={{ marginTop: 12 }}>
               <strong>Email:</strong>{' '}
-              <a href="mailto:shubhambiswas024@gmail.com">
-                shubhambiswas024@gmail.com
+              <a href="mailto:curemitrapharma@gmail.com">
+                curemitrapharma@gmail.com
               </a>
             </p>
           </motion.div>

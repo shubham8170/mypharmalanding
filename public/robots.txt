@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://curemitra.com/sitemap.xml
