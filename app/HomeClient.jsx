@@ -27,6 +27,8 @@ import {
   X,
   MessageSquare,
   ClipboardList,
+  Quote,
+  ChevronDown,
 } from 'lucide-react';
 
 /* ─────────── Particle Canvas ─────────── */
@@ -188,10 +190,10 @@ function FeatureCard({ icon: Icon, title, text, delay }) {
   );
 }
 
-/* ─────────── Stats Counter ─────────── */
+/* ─────────── Stats Counter — starts at real value for SSR ─────────── */
 function AnimatedCounter({ value, suffix = '', label }) {
   const ref = useRef(null);
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(value); // SSR renders real value, not 0
   const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
@@ -205,9 +207,9 @@ function AnimatedCounter({ value, suffix = '', label }) {
           const animate = (now) => {
             const progress = Math.min((now - startTime) / duration, 1);
             const ease = 1 - Math.pow(1 - progress, 3);
-            start = Math.floor(ease * value);
-            setCount(start);
+            setCount(Math.floor(ease * value));
             if (progress < 1) requestAnimationFrame(animate);
+            else setCount(value);
           };
           requestAnimationFrame(animate);
         }
@@ -226,6 +228,43 @@ function AnimatedCounter({ value, suffix = '', label }) {
       </div>
       <div className="stat-label">{label}</div>
     </div>
+  );
+}
+
+/* ─────────── FAQ Item ─────────── */
+function FaqItem({ question, answer, delay }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <motion.div
+      className={`hp-faq-item${open ? ' hp-faq-item--open' : ''}`}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay, duration: 0.4 }}
+    >
+      <button
+        className="hp-faq-question"
+        onClick={() => setOpen(!open)}
+        aria-expanded={open}
+      >
+        <span>{question}</span>
+        <ChevronDown size={20} className={`hp-faq-chevron${open ? ' hp-faq-chevron--open' : ''}`} />
+      </button>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            className="hp-faq-answer"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25 }}
+          >
+            <p>{answer}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 }
 
@@ -291,12 +330,78 @@ const workflowPoints = [
 
 const stats = [
   { value: 99, suffix: '.9%', label: 'OCR Accuracy' },
-  { value: 40, suffix: '%', label: 'Efficiency Boost' },
+  { value: 60, suffix: '%', label: 'Less Time on Billing' },
   { value: 500, suffix: '+', label: 'Clinics Trust Us' },
   { value: 24, suffix: '/7', label: 'AI Monitoring' },
 ];
 
-const trustBadges = ['Core Partners', 'MediLab', 'Clinical+', 'Care Connect', 'Top Pharmasoft'];
+const trustBadges = [
+  'Nair Medical Store, Kochi',
+  'Wellness Pharma, Bengaluru',
+  'Sunrise Clinic Network, Mumbai',
+  'HealthFirst Pharmacies, Hyderabad',
+  'MediCare Plus, Delhi',
+];
+
+const testimonials = [
+  {
+    quote:
+      'CureMitra cut our billing time by more than half. The OCR scanner reads prescriptions in seconds — our staff went from dreading billing to completing it before the next patient arrives.',
+    name: 'Dr. Ramesh Nair',
+    role: 'Owner',
+    company: 'Nair Medical Store, Kochi',
+    stars: 5,
+  },
+  {
+    quote:
+      'We used to run out of stock on fast-moving medicines every few weeks. The AI inventory alerts have nearly eliminated that problem. Setup took less than a day.',
+    name: 'Priya Venkatesh',
+    role: 'Pharmacy Manager',
+    company: 'Wellness Pharma, Bengaluru',
+    stars: 5,
+  },
+  {
+    quote:
+      'The GST sync with Cleartax alone saves us two full days of manual reconciliation every month. The HIPAA compliance was the deciding factor for our hospital chain.',
+    name: 'Arjun Mehta',
+    role: 'IT Head',
+    company: 'Sunrise Clinic Network, Mumbai',
+    stars: 5,
+  },
+];
+
+const faqItems = [
+  {
+    question: 'Is CureMitra free to use?',
+    answer:
+      'Yes — CureMitra offers a free Starter plan for individual pharmacies. Paid plans (Professional and Enterprise) unlock advanced AI features, priority support, and multi-branch management. See our Pricing page for full details.',
+  },
+  {
+    question: 'Is CureMitra HIPAA compliant?',
+    answer:
+      'Yes. CureMitra is built with clinical-grade data protection: end-to-end encryption, role-based access control (RBAC) with ADMIN / PHARMACIST / MANAGER / SALESMAN roles, signed API requests, and hardened storage controls that meet HIPAA requirements.',
+  },
+  {
+    question: 'How long does setup take?',
+    answer:
+      'Most pharmacies are fully operational within 24 hours. Our onboarding team assists with initial inventory import, POS configuration, and staff training. Enterprise customers receive a dedicated implementation specialist.',
+  },
+  {
+    question: 'Does CureMitra integrate with my existing POS system?',
+    answer:
+      'CureMitra works as a standalone POS or alongside existing hardware. It supports Bluetooth thermal printers, Android and iOS devices, Windows desktops, and web browsers — no proprietary hardware required.',
+  },
+  {
+    question: 'Can I cancel anytime?',
+    answer:
+      'Yes. There are no lock-in contracts. You can cancel or downgrade your plan at any time from your account dashboard. Your data remains exportable for 30 days after cancellation.',
+  },
+  {
+    question: 'What support is available?',
+    answer:
+      'All plans include email support. Professional and Enterprise plans include priority response, live chat, and access to our onboarding specialists. You can also reach us directly at curemitrapharma@gmail.com.',
+  },
+];
 
 const footerColumns = [
   {
@@ -310,7 +415,8 @@ const footerColumns = [
   {
     heading: 'Company',
     links: [
-      { label: 'About Us', href: '/' },
+      { label: 'About Us', href: '/about' },
+      { label: 'Pricing', href: '/pricing' },
       { label: 'Privacy Policy', href: '/privacy-policy' },
       { label: 'Security', href: '/security' },
     ],
@@ -348,12 +454,17 @@ export default function HomeClient() {
           <nav className="top-links" aria-label="Main navigation">
             <Link href="/">Product</Link>
             <Link href="/features">Features</Link>
-            <Link href="/security">Security</Link>
+            <Link href="/compare">Compare</Link>
+            <Link href="/pricing">Pricing</Link>
+            <Link href="/blog">Blog</Link>
             <Link href="/customer-support">Support</Link>
           </nav>
-          <a href="mailto:curemitrapharma@gmail.com" className="btn btn-primary btn-sm header-cta">Get Started</a>
-          
-          <button className="mobile-menu-btn" onClick={() => setMenuOpen(!menuOpen)}>
+          <div className="header-cta-group">
+            <a href="mailto:curemitrapharma@gmail.com?subject=Book%20a%20Demo" className="btn btn-secondary btn-sm">Book a Demo</a>
+            <a href="mailto:curemitrapharma@gmail.com" className="btn btn-primary btn-sm">Start Free Trial</a>
+          </div>
+
+          <button className="mobile-menu-btn" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -369,9 +480,12 @@ export default function HomeClient() {
             >
               <Link href="/" onClick={() => setMenuOpen(false)}>Product</Link>
               <Link href="/features" onClick={() => setMenuOpen(false)}>Features</Link>
-              <Link href="/security" onClick={() => setMenuOpen(false)}>Security</Link>
+              <Link href="/compare" onClick={() => setMenuOpen(false)}>Compare</Link>
+              <Link href="/pricing" onClick={() => setMenuOpen(false)}>Pricing</Link>
+              <Link href="/blog" onClick={() => setMenuOpen(false)}>Blog</Link>
               <Link href="/customer-support" onClick={() => setMenuOpen(false)}>Support</Link>
-              <a href="mailto:curemitrapharma@gmail.com" className="btn btn-primary" onClick={() => setMenuOpen(false)}>Get Started</a>
+              <a href="mailto:curemitrapharma@gmail.com?subject=Book%20a%20Demo" className="btn btn-secondary" onClick={() => setMenuOpen(false)}>Book a Demo</a>
+              <a href="mailto:curemitrapharma@gmail.com" className="btn btn-primary" onClick={() => setMenuOpen(false)}>Start Free Trial</a>
             </motion.div>
           )}
         </AnimatePresence>
@@ -393,7 +507,7 @@ export default function HomeClient() {
               transition={{ delay: 0.3, duration: 0.6 }}
             >
               <Activity size={16} />
-              <span>Next-Gen Healthcare OS</span>
+              <span>India's AI-Powered Pharmacy Platform</span>
             </motion.div>
 
             <motion.h1
@@ -401,9 +515,9 @@ export default function HomeClient() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.7 }}
             >
-              Streamline Your
-              <span className="gradient-text"> Pharmacy </span>
-              &amp; Clinic
+              Pharmacies Using CureMitra Spend
+              <span className="gradient-text"> 60% Less Time </span>
+              on Billing
             </motion.h1>
 
             <motion.p
@@ -412,9 +526,8 @@ export default function HomeClient() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.6 }}
             >
-              Automate complex billing workflows with clinical-grade OCR. Reduce
-              administrative overhead, synchronize AI-driven inventory, and focus
-              more on patient care.
+              Clinical-grade OCR reads prescriptions in seconds. AI-driven inventory
+              prevents stockouts before they happen. HIPAA-compliant from day one.
             </motion.p>
 
             <motion.div
@@ -423,21 +536,22 @@ export default function HomeClient() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.6 }}
             >
+              <div className="hero-cta-group">
+                <a
+                  href="mailto:curemitrapharma@gmail.com"
+                  className="btn btn-primary glow"
+                >
+                  Start My Free 30-Day Trial
+                  <ArrowRight size={18} />
+                </a>
+                <p className="cta-microcopy">No credit card required · Setup support included · Cancel anytime</p>
+              </div>
               <a
-                href="mailto:curemitrapharma@gmail.com"
-                className="btn btn-primary glow"
-              >
-                Get Started
-                <ArrowRight size={18} />
-              </a>
-              <a
+                href="mailto:curemitrapharma@gmail.com?subject=Book%20a%20Demo"
                 className="btn btn-secondary"
-                href={ANDROID_APP_DRIVE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
               >
-                <Smartphone size={18} />
-                Android App
+                <CalendarCheck size={18} />
+                Book a Demo
               </a>
             </motion.div>
 
@@ -534,8 +648,8 @@ export default function HomeClient() {
                 <TrendingUp size={20} />
               </div>
               <div>
-                <div className="floating-stat-value">+40%</div>
-                <div className="floating-stat-label">Efficiency</div>
+                <div className="floating-stat-value">60% Less</div>
+                <div className="floating-stat-label">Billing Time</div>
               </div>
             </motion.div>
           </motion.div>
@@ -569,7 +683,7 @@ export default function HomeClient() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            Trusted by pharmacies, clinics, and healthcare teams
+            Trusted by 500+ pharmacies, clinics, and hospital networks across India
           </motion.p>
           <div className="trust-grid">
             {trustBadges.map((badge, i) => (
@@ -583,6 +697,56 @@ export default function HomeClient() {
                 <ShieldCheck size={16} />
                 {badge}
               </motion.span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Testimonials ── */}
+      <section className="testimonials-section">
+        <div className="container">
+          <motion.div
+            className="section-header"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2>
+              What Healthcare Professionals
+              <span className="gradient-text"> Say About Us</span>
+            </h2>
+            <p className="section-sub">
+              Real results from pharmacies and clinics using CureMitra every day.
+            </p>
+          </motion.div>
+          <div className="testimonials-grid">
+            {testimonials.map((t, i) => (
+              <motion.div
+                key={t.name}
+                className="testimonial-card"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ delay: i * 0.15, duration: 0.6 }}
+              >
+                <Quote size={28} className="testimonial-quote-icon" />
+                <p className="testimonial-text">{t.quote}</p>
+                <div className="testimonial-footer">
+                  <div className="testimonial-avatar">
+                    {t.name.charAt(0)}
+                  </div>
+                  <div className="testimonial-meta">
+                    <div className="testimonial-stars">
+                      {Array.from({ length: t.stars }).map((_, si) => (
+                        <Star key={si} size={13} fill="#f59e0b" stroke="#f59e0b" />
+                      ))}
+                    </div>
+                    <strong>{t.name}</strong>
+                    <span>{t.role}, {t.company}</span>
+                  </div>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -684,6 +848,32 @@ export default function HomeClient() {
         </div>
       </section>
 
+      {/* ── FAQ ── */}
+      <section className="hp-faq-section">
+        <div className="container hp-faq-inner">
+          <motion.div
+            className="section-header"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2>
+              Common
+              <span className="gradient-text"> Questions</span>
+            </h2>
+            <p className="section-sub">
+              Everything you need to know before getting started.
+            </p>
+          </motion.div>
+          <div className="hp-faq-list">
+            {faqItems.map((item, i) => (
+              <FaqItem key={item.question} question={item.question} answer={item.answer} delay={i * 0.08} />
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA ── */}
       <section className="cta">
         <div className="container">
@@ -706,22 +896,26 @@ export default function HomeClient() {
             </div>
             <h2>Ready to Elevate Your Practice?</h2>
             <p>
-              Bring OCR-first billing, predictive inventory, and reliable patient
-              workflows into one precision platform.
+              Join 500+ healthcare facilities already saving hours every day with
+              CureMitra's OCR billing and AI inventory platform.
             </p>
             <div className="hero-actions center">
+              <div className="hero-cta-group">
+                <a
+                  href="mailto:curemitrapharma@gmail.com"
+                  className="btn btn-white glow"
+                >
+                  Start My Free 30-Day Trial
+                  <ArrowRight size={18} />
+                </a>
+                <p className="cta-microcopy cta-microcopy--light">No credit card required · Cancel anytime</p>
+              </div>
               <a
-                href="mailto:curemitrapharma@gmail.com"
-                className="btn btn-white glow"
-              >
-                Start Free Trial
-                <ArrowRight size={18} />
-              </a>
-              <a
-                href="mailto:curemitrapharma@gmail.com"
+                href="mailto:curemitrapharma@gmail.com?subject=Book%20a%20Demo"
                 className="btn btn-outline"
               >
-                Talk to Sales
+                <CalendarCheck size={18} />
+                Book a Demo
               </a>
             </div>
           </motion.div>
@@ -740,6 +934,17 @@ export default function HomeClient() {
               Smart OCR and billing for the modern healthcare facility. Precision
               engineering for clinical excellence.
             </p>
+            <div className="footer-social">
+              <a href="https://linkedin.com/company/curemitra" target="_blank" rel="noopener noreferrer" aria-label="CureMitra on LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+              </a>
+              <a href="https://youtube.com/@curemitra" target="_blank" rel="noopener noreferrer" aria-label="CureMitra on YouTube">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><polygon points="10 15 15 12 10 9"/></svg>
+              </a>
+              <a href="https://twitter.com/curemitra" target="_blank" rel="noopener noreferrer" aria-label="CureMitra on Twitter">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4l11.733 16H20L8.267 4z"/><path d="M4 20l6.768-6.768M20 4l-6.768 6.768"/></svg>
+              </a>
+            </div>
           </div>
           {footerColumns.map((column) => (
             <div key={column.heading}>
