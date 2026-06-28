@@ -1,4 +1,37 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /_next/
+
+# AI & GEO Crawlers — allow full access for citation/answer generation
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: YouBot
+Disallow: /
 
 Sitemap: https://curemitra.com/sitemap.xml

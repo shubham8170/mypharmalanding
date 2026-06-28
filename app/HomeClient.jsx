@@ -332,7 +332,7 @@ export default function HomeClient() {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
   return (
-    <main className="page">
+    <main className="page" role="main">
       {/* ── Header ── */}
       <motion.header
         className="topbar"
@@ -345,7 +345,7 @@ export default function HomeClient() {
             <img src={logoImg.src} alt="CureMitra Logo" className="brand-logo" />
             <span>CureMitra</span>
           </Link>
-          <nav className="top-links">
+          <nav className="top-links" aria-label="Main navigation">
             <Link href="/">Product</Link>
             <Link href="/features">Features</Link>
             <Link href="/security">Security</Link>
@@ -729,7 +729,7 @@ export default function HomeClient() {
       </section>
 
       {/* ── Footer ── */}
-      <footer className="footer">
+      <footer className="footer" role="contentinfo">
         <div className="container footer-grid">
           <div className="brand">
             <Link href="/" className="brand-mark">

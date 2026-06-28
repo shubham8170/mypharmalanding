@@ -193,7 +193,7 @@ export default function SecurityClient() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <main className="subpage">
+    <main className="subpage" role="main">
       {/* ── Particle Background ── */}
       <div style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }}>
         <ParticleCanvas />
@@ -211,7 +211,7 @@ export default function SecurityClient() {
             <img src={logoImg.src} alt="CureMitra Logo" className="brand-logo" />
             <span>CureMitra</span>
           </Link>
-          <nav className="top-links">
+          <nav className="top-links" aria-label="Main navigation">
             <Link href="/">Product</Link>
             <Link href="/features">Features</Link>
             <Link href="/security">Security</Link>
@@ -361,7 +361,7 @@ export default function SecurityClient() {
       </section>
 
       {/* ── Footer ── */}
-      <footer className="footer">
+      <footer className="footer" role="contentinfo">
         <div className="container footer-grid">
           <div className="brand">
             <Link href="/" className="brand-mark">
