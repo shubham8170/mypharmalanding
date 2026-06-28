@@ -675,6 +675,7 @@ h2 {
   border-radius: 24px;
   padding: 40px;
   min-height: 340px;
+  height: 100%;
   transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
@@ -1397,6 +1398,7 @@ li a svg {
   border-radius: 24px;
   padding: 32px;
   min-height: 190px;
+  height: 100%;
   transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
@@ -1735,3 +1737,13 @@ li a svg {
     font-size: 32px;
   }
 }
+
+/* Ensure all grid wrappers stretch children equally */
+.feature-grid > div,
+.sub-grid-3 > div,
+.sub-grid-2 > div {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
